@@ -28,9 +28,9 @@ const Navbar = () => {
           <div className="hidden lg:flex w-full items-center text-center">
             {/* Lewa strona linków */}
             <div className="flex-1 flex justify-start space-x-4">
-              <Link href="/" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Home</Link>
-              <Link href="/about" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">O nas</Link>
-              <Link href="/gallery" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Galeria</Link>
+              <Link href="/" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Home</Link>
+              <Link href="/about" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">O nas</Link>
+              <Link href="/gallery" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Galeria</Link>
             </div>
 
             {/* Logo na środku */}
@@ -42,9 +42,9 @@ const Navbar = () => {
 
             {/* Prawa strona linków */}
             <div className="flex-1 flex justify-end space-x-4">
-              <Link href="/news" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Aktualności</Link>
-              <Link href="/events" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Wydarzenia</Link>
-              <Link href="/contact" className="hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Kontakt</Link>
+              <Link href="/news" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Aktualności</Link>
+              <Link href="/events" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Wydarzenia</Link>
+              <Link href="/contact" className="hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Kontakt</Link>
             </div>
           </div>
 
@@ -69,12 +69,12 @@ const Navbar = () => {
         {/* Rozwijane menu mobilne */}
         {isOpen && (
           <div className="lg:hidden mt-2.5 space-y-1">
-            <Link href="/" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Home</Link>
-            <Link href="/about" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">O nas</Link>
-            <Link href="/gallery" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Galeria</Link>
-            <Link href="/news" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Aktualności</Link>
-            <Link href="/events" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Wydarzenia</Link>
-            <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:bg-oxfordBlue px-3 py-2 rounded-3xl text-lg font-montserrat font-bold">Kontakt</Link>
+            <Link href="/" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Home</Link>
+            <Link href="/about" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">O nas</Link>
+            <Link href="/gallery" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Galeria</Link>
+            <Link href="/news" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Aktualności</Link>
+            <Link href="/events" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Wydarzenia</Link>
+            <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:bg-philippineSilver px-3 py-2 rounded-3xl text-lg font-montserrat font-bold duration-250">Kontakt</Link>
           </div>
         )}
       </div>
