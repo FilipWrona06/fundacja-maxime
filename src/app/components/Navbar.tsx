@@ -51,7 +51,7 @@ const Navbar = () => {
           {/* ---- Wersja na małe ekrany (Mobile) ---- */}
           <div className="lg:hidden flex justify-between items-center w-full">
             {/* Logo po lewej na mobilnych */}
-            <div className="text-4xl font-youngest">
+            <div className="text-4xl pl-1.5 font-youngest">
               <Link href="/">Fundacja Maxime</Link>
             </div>
             
