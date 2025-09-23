@@ -12,13 +12,13 @@
 }
 
 @theme {
-  /*Własne kolory maxime */
+  /* Kolory maxime */
   --color-raisinBlack: rgb(38, 38, 38);
   --color-arylideYellow: rgb(239, 293, 111);
   --color-philippineSilver: rgb(178, 178, 178);
   --color-oxfordBlue: rgb(0, 28, 72);
 
-  /*Własne czcionki maxime */
+  /* Czcionki maxime */
   --font-youngest: youngest;
   --font-montserrat: 'Montserrat';
 }

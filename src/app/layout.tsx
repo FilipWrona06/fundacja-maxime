@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Fundacja Maxime",
-  description: "Fundacja Maxime",
+  description: "Page By Filip Wrona",
 };
 
 export default function RootLayout({
