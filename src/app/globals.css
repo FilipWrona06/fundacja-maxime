@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 :root{
-  background-color: black;
+  background-color: rgb(38, 38, 38);
   color: white;
 }
 
@@ -22,4 +22,16 @@
   /* Czcionki maxime */
   --font-youngest: youngest;
   --font-montserrat: 'Montserrat';
+}
+
+/* Customizacja strzałek Swipera */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #B7B7B7 !important; /* Używamy koloru philippineSilver */
+    transition: transform 0.2s ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    transform: scale(1.2);
 }

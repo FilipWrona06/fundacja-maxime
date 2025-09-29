@@ -1,38 +1,12 @@
 // app/about/page.tsx
 
 import Image from 'next/image';
+import TeamSlider from '../components/TeamSlider'; // Użyj poprawnej ścieżki! Może być '../components/TeamSlider'
 
-// DANE ZARZĄDU - w przyszłości możesz je pobierać z bazy danych
-const managementTeam = [
-  {
-    name: 'Anna Nowak',
-    position: 'Prezes Fundacji',
-    imageUrl: '/placeholder.jpg', // Ścieżka do zdjęcia
-    description: 'Anna jest założycielką fundacji z ponad 10-letnim doświadczeniem w sektorze non-profit. Jej pasją jest tworzenie projektów, które realnie zmieniają życie społeczności.',
-  },
-  {
-    name: 'Jan Kowalski',
-    position: 'Wiceprezes ds. Finansów',
-    imageUrl: '/placeholder.jpg',
-    description: 'Jan dba o stabilność finansową organizacji. Jest ekspertem w dziedzinie pozyskiwania funduszy i zrównoważonego rozwoju.',
-  },
-  {
-    name: 'Maria Wiśniewska',
-    position: 'Dyrektor ds. Projektów',
-    imageUrl: '/placeholder.jpg',
-    description: 'Maria koordynuje wszystkie nasze inicjatywy. Dba o to, by każdy projekt był realizowany z najwyższą starannością i przynosił oczekiwane rezultaty.',
-  },
-  {
-    name: 'Piotr Zieliński',
-    position: 'Specjalista ds. Komunikacji',
-    imageUrl: '/placeholder.jpg',
-    description: 'Piotr odpowiada za kontakt ze światem. To dzięki niemu nasza misja dociera do szerokiego grona odbiorców i wolontariuszy.',
-  },
-];
+import { teamMembers } from '../data/TeamData'; // Upewnij się, że ścieżka jest poprawna!
 
 const AboutPage = () => {
   return (
-    <div className="bg-raisinBlack">
       <div className="container mx-auto px-6 py-16 md:py-24">
         
         {/* --- SEKCJA TYTUŁOWA Z MISJĄ --- */}
@@ -78,43 +52,19 @@ const AboutPage = () => {
           </section>
         </div>
 
-        {/* --- NOWA SEKCJA: ZARZĄD --- */}
-        <section className="text-center mt-24">
-          <h2 className="text-4xl font-montserrat font-bold mb-4">
-            Nasz Zarząd
-          </h2>
-          <div className="w-75% h-0.5 bg-philippineSilver mx-auto"></div>
+        {/* --- ZAKTUALIZOWANA SEKCJA: ZESPÓŁ --- */}
+      <section className="text-center mt-24">
+        <h2 className="text-4xl font-montserrat font-bold mb-4">
+          Nasz Zespół
+        </h2>
+        <div className="w-75% h-0.5 bg-philippineSilver mx-auto"></div>
 
-          {/* Grid z kartami członków zarządu */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            {managementTeam.map((member) => (
-              <div
-                key={member.name}
-                className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer"
-              >
-                {/* Tło (obrazek) - powiększa się po najechaniu */}
-                <div className="w-full h-full border-2 border-philippineSilver transition-transform duration-250 ease-in-out group-hover:scale-110 flex items-center justify-center">
-                  {/* Użyj komponentu Image, gdy będziesz miał zdjęcia */}
-                  {/* <Image src={member.imageUrl} alt={member.name} layout="fill" objectFit="cover" className="..." /> */}
-                   <span>Zdjęcie</span>
-                </div>
+        <div className="mt-12">
+          {/* Komponent slidera teraz pobiera dane z importu */}
+          <TeamSlider members={teamMembers} />
+        </div>
+      </section>
 
-                {/* Nakładka z imieniem i pozycją (widoczna domyślnie) */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 to-transparent transition-opacity duration-250 group-hover:opacity-0">
-                  <h3 className="font-montserrat font-bold text-lg">{member.name}</h3>
-                  <p className="text-sm">{member.position}</p>
-                </div>
-
-                {/* Nakładka z opisem (pojawia się po najechaniu) */}
-                <div className="absolute inset-0 flex items-center justify-center p-6 bg-raisinBlack/90 text-center opacity-0 transition-opacity duration-250 ease-in-out group-hover:opacity-100">
-                  <p className="text-sm">{member.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-      </div>
     </div>
   );
 };
