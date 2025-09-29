@@ -9,6 +9,7 @@
 @font-face {
   font-family: youngest;
   src: url(./fonts/the-youngest-script.ttf);
+  font-display: swap;
 }
 
 @theme {
