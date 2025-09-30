@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from '@vercel/analytics/react'; // <-- DODAJ TEN IMPORT
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Navbar />
             {children}
           <Footer />
+        <Analytics /> {/* <-- DODAJ TĘ LINIĘ TUTAJ */}
         </div>
       </body>
     </html>
