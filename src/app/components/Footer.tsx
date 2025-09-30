@@ -1,8 +1,52 @@
+'use client'; // KROK 1: Oznaczamy jako komponent kliencki
+
+import { useState, useEffect } from 'react'; // ZAKTUALIZOWANA LINIA
 import Link from 'next/link';
-// Importowanie ikon z popularnej biblioteki `react-icons`.
 import { FaFacebook, FaInstagram, FaYoutube, FaHeart } from 'react-icons/fa';
+import jsonp from 'jsonp'; // Importujemy zainstalowaną bibliotekę
 
 const Footer = () => {
+  // KROK 2: Definiujemy stany do zarządzania formularzem
+  const [email, setEmail] = useState(''); // Zainicjuj stan pustym stringiem
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (status === 'success' || status === 'error') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+        setMessage('');
+      }, 5000); // 5 sekund
+
+      return () => clearTimeout(timer);
+    }
+  }, [status]); // Uruchom tylko, gdy `status` się zmieni
+
+  // KROK 3: Tworzymy funkcję obsługującą wysyłkę
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Zatrzymujemy domyślne przeładowanie strony
+    setStatus('loading');
+    setMessage('');
+
+    // UWAGA: Wklej tutaj swój URL akcji z Mailchimp
+    const mailchimpUrl = 'https://interia.us22.list-manage.com/subscribe/post?u=571c8b619e1df84cb6ac15b70&id=c4775cb68a&f_id=00f3c2e1f0';
+
+    // Mailchimp do zapytań JSONP wymaga specjalnie zmodyfikowanego URL
+    const url = mailchimpUrl.replace('/post?', '/post-json?');
+
+    // Wysyłamy dane za pomocą jsonp
+    jsonp(`${url}&EMAIL=${email}`, { param: 'c' }, (err, data) => {
+      if (err || (data && data.result !== 'success')) {
+        setStatus('error');
+        setMessage('Wystąpił błąd. Sprawdź adres e-mail i spróbuj ponownie.');
+      } else {
+        setStatus('success');
+        setMessage('Dziękujemy! Sprawdź skrzynkę, by potwierdzić subskrypcję.');
+        setEmail(''); // Czyścimy pole po sukcesie
+      }
+    });
+  };
+
   return (
     <footer className="bg-raisinBlack">
       <div className="container mx-auto px-6 py-12">
@@ -81,12 +125,28 @@ const Footer = () => {
             <h4 className="text-lg font-montserrat font-bold mb-4">
               Bądź na bieżąco
             </h4>
-            <form className="flex flex-col gap-2">
-              <input type="email" placeholder="Twój adres e-mail" className="w-full px-4 py-2 bg-black/50 placeholder-philippineSilver rounded-3xl focus:outline-none focus:ring-2 focus:ring-philippineSilver font-montserrat" />
-              <button type="submit" className="w-full bg-transparent border-2 border-philippineSilver font-montserrat font-bold px-4 py-2 rounded-3xl hover:bg-philippineSilver hover:text-raisinBlack transition-colors duration-250">
-                Zapisz się
+                        {/* KROK 4: Aktualizujemy JSX formularza */}
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <input 
+                type="email" 
+                placeholder="Twój adres e-mail"
+                value={email} // Wartość kontrolowana przez stan
+                onChange={(e) => setEmail(e.target.value)} // Aktualizacja stanu przy wpisywaniu
+                required
+                className="w-full px-4 py-2 bg-black/50 placeholder-philippineSilver rounded-3xl focus:outline-none focus:ring-2 focus:ring-philippineSilver font-montserrat" 
+              />
+              <button 
+                type="submit" 
+                disabled={status === 'loading'} // Blokada przycisku podczas wysyłania
+                className="w-full bg-transparent border-2 border-philippineSilver font-montserrat font-bold px-4 py-2 rounded-3xl hover:bg-philippineSilver hover:text-raisinBlack transition-colors duration-250 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {status === 'loading' ? 'Zapisywanie...' : 'Zapisz się'}
               </button>
             </form>
+            
+            {/* Wyświetlanie komunikatów zwrotnych */}
+            {status === 'success' && <p className="text-sm mt-2 font-montserrat font-bold text-green-400">{message}</p>}
+            {status === 'error' && <p className="text-sm mt-2 font-montserrat font-bold text-red-400">{message}</p>}
           </div>
         </div>
 
