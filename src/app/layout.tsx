@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react'; // <-- DODAJ TEN IMPORT
+import { SpeedInsights } from '@vercel/speed-insights/next'; // <-- DODAJ TEN IMPORT
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -29,12 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div>
           <Navbar />
             {children}
           <Footer />
         <Analytics /> {/* <-- DODAJ TĘ LINIĘ TUTAJ */}
-        </div>
+        <SpeedInsights /> {/* <-- DODAJ TĘ LINIĘ TUTAJ */}
       </body>
     </html>
   );
